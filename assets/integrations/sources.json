@@ -1,0 +1,184 @@
+[
+  {
+    "name": "1С",
+    "official_source_url": "https://1c.ru/",
+    "asset_url": "https://1c.ru/fav.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Битрикс24",
+    "official_source_url": "https://www.bitrix24.ru/",
+    "asset_url": "https://www.bitrix24.ru/favicon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "amoCRM",
+    "official_source_url": "https://www.amocrm.ru/",
+    "asset_url": "https://www.amocrm.ru/favicon.ico",
+    "icon_type": "png",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "МойСклад",
+    "official_source_url": "https://online.moysklad.ru/",
+    "asset_url": "https://cdn-static.moysklad.ru/cdn/r1731/online.moysklad.ru/shortcut_white_bg_400x400.png",
+    "icon_type": "png",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "retailCRM",
+    "official_source_url": "https://www.retailcrm.ru/",
+    "asset_url": "https://www.retailcrm.ru/favicon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "InSales",
+    "official_source_url": "https://www.insales.ru/",
+    "asset_url": "https://cdn.insales-shop.ru/assets/1/57/11280441/1789592568/favicon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Wildberries",
+    "official_source_url": "https://www.wildberries.ru/",
+    "asset_url": "https://www.wildberries.ru/icon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Ozon",
+    "official_source_url": "https://play.google.com/store/apps/details?gl=RU&hl=en&id=ru.ozon.app.android",
+    "asset_url": "https://play-lh.googleusercontent.com/iZhyKvRs1otTwl4NyHzX_6GT3AUO6vBuvBQaf56VtZsDteoQ-ceNr5fwzYQjHxBISZtobnB1zVu1avuU41ParQ=w240-h480",
+    "icon_type": "jpg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Яндекс Маркет",
+    "official_source_url": "https://market.yandex.ru/",
+    "asset_url": "https://avatars.mds.yandex.net/get-marketcms/1779479/img-c458bd4f-0f07-47da-b420-523d59c2a950.png/favicon_196x196",
+    "icon_type": "png",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Авито",
+    "official_source_url": "https://www.avito.ru/",
+    "asset_url": "https://www.avito.st/dstatic/favicon.ico",
+    "icon_type": "png",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Telegram",
+    "official_source_url": "https://github.com/telegramdesktop/tdesktop/tree/dev/Telegram/Resources/art",
+    "asset_url": "https://raw.githubusercontent.com/telegramdesktop/tdesktop/dev/Telegram/Resources/art/logo_256_no_margin.png",
+    "icon_type": "official Telegram Desktop logo asset (png)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "WhatsApp",
+    "official_source_url": "https://www.whatsapp.com/",
+    "asset_url": "https://static.whatsapp.net/rsrc.php/y1/r/FJbTMJqMap7.svg",
+    "icon_type": "brand favicon (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "VK",
+    "official_source_url": "https://vk.com/",
+    "asset_url": "https://m.vk.com/images/icons/pwa/apple/default.png?15",
+    "icon_type": "brand favicon (png)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "Jivo",
+    "official_source_url": "https://www.jivo.ru/",
+    "asset_url": "https://www.jivo.ru/favicon.svg",
+    "icon_type": "brand favicon (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "Webim",
+    "official_source_url": "https://webim.ru/",
+    "asset_url": "https://site-cdn.webim.ru/static/images/favicon/favicon.0db345120bc5.svg",
+    "icon_type": "brand favicon (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "Chat2Desk",
+    "official_source_url": "https://chat2desk.com/brend",
+    "asset_url": "https://chat2desk.com/tpl/images/brand/files/C2D_new_logo_Symbol.svg",
+    "icon_type": "official brand symbol (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "Voximplant",
+    "official_source_url": "https://voximplant.com/",
+    "asset_url": "https://voximplant.com/favicon.ico",
+    "icon_type": "official brand favicon (ico)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "UIS",
+    "official_source_url": "https://www.uiscom.ru/main/",
+    "asset_url": "https://www.uiscom.ru/local/templates/uiscom/images/favicon/120x120.png",
+    "icon_type": "brand favicon (png)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "GigaChat",
+    "official_source_url": "https://giga.chat/",
+    "asset_url": "https://giga.chat/icons/gigachat/safari-pinned-tab.svg",
+    "icon_type": "product favicon (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "YandexGPT",
+    "official_source_url": "https://aistudio.yandex.ru/",
+    "asset_url": "https://aistudio.yandex.ru/favicon/svg/favicon.svg",
+    "icon_type": "Yandex AI Studio vendor/product-family favicon (svg)",
+    "vendor_identity_only": true
+  },
+  {
+    "name": "Контур",
+    "official_source_url": "https://kontur.ru/",
+    "asset_url": "https://s.kontur.ru/common-v2/icons-products/kontur/favicon/kontur-favicon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "СБИС",
+    "official_source_url": "https://sbis.ru/",
+    "asset_url": "https://saby.ru/cdn/SbisRuCDN/1.0.7/favicons/icon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "Диадок",
+    "official_source_url": "https://diadoc.kontur.ru/",
+    "asset_url": "https://s.kontur.ru/common-v2/icons-products/diadoc/favicon/diadoc-favicon.svg",
+    "icon_type": "svg",
+    "vendor_identity_only": null
+  },
+  {
+    "name": "MaxPatrol SIEM",
+    "official_source_url": "https://group.ptsecurity.com/",
+    "asset_url": "https://dclogic.ru/upload/iblock/05e/mbtjpcgu554k0zm0c07yx4p53zz00h6e.svg",
+    "icon_type": "product logo from certified reseller",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "KUMA",
+    "official_source_url": "https://lp.kaspersky.com/ru/kuma/",
+    "asset_url": "https://lp.kaspersky.com/ru/wp-content/themes/kuma-1/images/kuma.svg",
+    "icon_type": "official product SVG (svg)",
+    "vendor_identity_only": false
+  },
+  {
+    "name": "RuSIEM",
+    "official_source_url": "https://rusiem.com/",
+    "asset_url": "https://static.tildacdn.com/tild3032-3238-4133-a363-326438333933/favicon.svg",
+    "icon_type": "RuSIEM brand favicon (svg)",
+    "vendor_identity_only": false
+  }
+]
