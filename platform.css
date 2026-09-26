@@ -192,3 +192,8 @@
 @keyframes loop-run-v{from{top:0}to{top:calc(100% - 50px)}}
 @media(max-width:700px){.risk-grid{grid-template-columns:1fr}.pain-result p{font-size:17px}.pain-result{padding:18px}.pain-result .button{width:100%}}
 .tech-header .menu-toggle{margin-left:auto}
+@media(max-width:560px){.score th:nth-child(2),.score td:nth-child(2){display:none}.score table{table-layout:fixed}.score th:first-child,.score td:first-child{width:46%}.score .bar i{width:30px}.score-head{font-size:10px}.electric-theme .kicker,.electric-theme .hero-copy .kicker{font-size:10px}}
+@media(max-width:760px){.ex-foot{display:contents}.ex-sum{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.ex-sum div{min-width:0}.ex-controls{position:sticky;bottom:12px;z-index:4;display:flex;gap:8px;margin-top:12px;padding:8px;border-radius:12px;background:#0c121bee;border:1px solid var(--vx-line2);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 10px 30px #000a}.ex-controls .ex-step{flex:0 0 auto}.ex-controls .ex-play{flex:1;justify-content:center}}
+@media(max-width:420px){.ex-col-agents,.ex-col-systems{grid-template-columns:1fr 1fr}.ex-node small{display:none}.ex-node{padding:9px}.ex-node strong{font-size:12.5px;line-height:1.25}.ex-hub{padding:16px 14px}.ex-hub-steps div{font-size:12.5px}}
+@media(max-width:760px){.ex-log-head span:last-child{display:none}}
+@media(max-width:560px){.score .bar i{display:none}.score td,.score th{padding-left:12px;padding-right:12px}.score th:first-child,.score td:first-child{width:52%}}
