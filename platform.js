@@ -1,7 +1,8 @@
 /* Verity platform story: live example + before/after diagrams. Demo data only. */
 (function(){
   var PRICE={read:.15,write:.85,fact:1.2};
-  var LABEL={ok:'РАЗРЕШЕНО',bad:'ОСТАНОВЛЕНО',wait:'ЖДЁТ ЧЕЛОВЕКА',pass:'ПЕРЕДАНО',log:'ЗАПИСАНО',back:'ВОЗВРАЩЕНО'};
+  var LABEL={ok:'РАЗРЕШЕНО',bad:'ОСТАНОВЛЕНО',wait:'ЧЕЛОВЕКУ',pass:'ПЕРЕДАНО',log:'ЗАПИСАНО',back:'ВОЗВРАЩЕНО'};
+  var HUBV={ok:'РАЗРЕШЕНО АВТОМАТИЧЕСКИ',bad:'ОСТАНОВЛЕНО · НА ИСПРАВЛЕНИЕ',wait:'КРАЙНИЙ СЛУЧАЙ · ЧЕЛОВЕКУ',pass:'ЗАДАЧА ПЕРЕДАНА',log:'ЗАПИСАНО В ИСТОРИЮ',back:'АГЕНТ ИСПРАВЛЯЕТСЯ'};
   var CLS={ok:'v-ok',bad:'v-bad',wait:'v-wait',pass:'v-pass',log:'v-pass',back:'v-pass'};
 
   var SCENARIOS={
@@ -15,9 +16,7 @@
         {a:['support','stock'],s:[],what:'Агент поддержки → Агент склада: «Есть 10 × Ergo Pro?»',check:'Передача задачи между агентами — по общим правилам ✓',v:'pass',k:'read',hub:{rights:'ok'}},
         {a:['stock'],s:['sklad'],what:'Агент склада → МойСклад: остаток Ergo Pro',check:'На складе 24 шт ✓',v:'ok',k:'read',hub:{rights:'ok',data:'ok'}},
         {a:['stock'],s:['sklad'],what:'Агент склада → МойСклад: резерв 10 шт',check:'Лимит агента склада: резерв до 100 шт ✓',v:'ok',k:'write',hub:{rights:'ok',data:'ok',rule:'ok'}},
-        {a:['account'],s:['onec'],what:'Агент учёта → 1С: счёт на 184 000 ₽',check:'Правило: счёт свыше 150 000 ₽ подтверждает руководитель',v:'wait',k:'write',hub:{rights:'ok',data:'ok',rule:'wait'},
-          tg:{text:'Агент учёта хочет выставить счёт ООО «Ромашка» на 184 000 ₽ (10 × Ergo Pro). Разрешить?',btns:['Разрешить','Отклонить']}},
-        {a:['account'],s:['onec'],what:'Руководитель в Telegram: «Разрешить»',check:'Счёт №А-1043 создан в 1С',v:'ok',k:null,hub:{rights:'ok',data:'ok',rule:'ok'},press:true},
+        {a:['account'],s:['onec'],what:'Агент учёта → 1С: счёт на 184 000 ₽',check:'Клиент есть в 1С, лимит 500 000 ₽, долгов нет, цены = прайс ✓ — счёт №А-1043 создан',v:'ok',k:'write',hub:{rights:'ok',data:'ok',rule:'ok'}},
         {a:['support'],s:[],what:'Агент поддержки → клиенту: ответ',check:'Сверка: 10 шт = резерв в МоёмСкладе ✓ · 184 000 ₽ = счёт в 1С ✓',v:'ok',k:'fact',hub:{rights:'ok',data:'ok',rule:'ok'},
           reply:'«Готово! 10 кресел Ergo Pro в резерве, счёт №А-1043 на 184 000 ₽ отправлен вам на почту.»'},
         {a:['support'],s:['amo'],what:'Агент поддержки → amoCRM: сделка «Ромашка», 184 000 ₽',check:'Право: запись сделок ✓',v:'ok',k:'write',hub:{rights:'ok',rule:'ok'}}
@@ -44,10 +43,24 @@
       steps:[
         {a:['support'],s:['bitrix'],what:'Агент поддержки ← Битрикс24: сообщение сотрудника',check:'Право: чтение чатов ✓',v:'ok',k:'read',hub:{rights:'ok'}},
         {a:['support'],s:['onec'],what:'Агент поддержки → 1С: цена Ergo Pro 18 400 → 12 900 ₽',check:'Агенту поддержки запись в 1С запрещена ✕',v:'bad',k:'write',hub:{rights:'bad',rule:'bad'}},
-        {a:['support'],s:[],what:'Verity → Telegram: уведомление администратору',check:'Попытка без прав сохранена в истории',v:'log',k:null,hub:{rights:'bad',rule:'bad'},
-          tg:{text:'Агент поддержки пытался изменить цену в 1С без прав. Действие остановлено.',btns:['Открыть историю','Отключить агента']}},
+        {a:['support'],s:[],what:'Контролёр → Агенту поддержки: причина отказа',check:'Попытка сохранена в истории и попадёт в табель надёжности',v:'back',k:null,hub:{rights:'bad',rule:'bad'}},
         {a:['support'],s:[],what:'Агент поддержки → сотруднику: ответ',check:'Ответ соответствует правам агента ✓',v:'ok',k:'fact',hub:{rights:'ok',rule:'ok'},
           reply:'«Менять цены в 1С может только отдел продаж. Передать ваш запрос руководителю?»'}
+      ]
+    },
+    edge:{
+      inLabel:'КЛИЕНТ ПИШЕТ В ЧАТ БИТРИКС24',
+      inText:'«Нужно 60 кресел Ergo Pro. Счёт на ООО «Вектор», оплатим после поставки.»',
+      outLabel:'ОТВЕТ КЛИЕНТУ',
+      steps:[
+        {a:['support'],s:['bitrix'],what:'Агент поддержки ← Битрикс24: новое обращение из чата',check:'Право: чтение чатов ✓',v:'ok',k:'read',hub:{rights:'ok'}},
+        {a:['support'],s:['amo'],what:'Агент поддержки → amoCRM: найти клиента «Вектор»',check:'Нет ни в amoCRM, ни в 1С — новый клиент без истории оплат',v:'ok',k:'read',hub:{rights:'ok',data:'ok'}},
+        {a:['stock'],s:['sklad'],what:'Агент склада → МойСклад: резерв 60 шт',check:'На складе 24 шт — контролёр сам разрешил резерв 24 шт, остальное под заказ ✓',v:'ok',k:'write',hub:{rights:'ok',data:'ok',rule:'ok'}},
+        {a:['account'],s:['onec'],what:'Агент учёта → 1С: счёт на 1 104 000 ₽ с оплатой после поставки',check:'Новый клиент + отсрочка + сумма выше всех лимитов — автоматически решить нельзя',v:'wait',k:'write',hub:{rights:'ok',data:'ok',rule:'wait'},
+          tg:{text:'Крайний случай: новый клиент ООО «Вектор», 1 104 000 ₽, оплата после поставки. Как поступить?',btns:['Только предоплата','Отклонить']}},
+        {a:['account'],s:['onec'],what:'Руководитель в Telegram: «Только предоплата»',check:'Контролёр применил решение: счёт №А-1044 на 100% предоплату',v:'ok',k:null,hub:{rights:'ok',data:'ok',rule:'ok'},press:true},
+        {a:['support'],s:[],what:'Агент поддержки → клиенту: ответ',check:'Сверка: 24 шт = резерв ✓ · условия = счёт в 1С ✓',v:'ok',k:'fact',hub:{rights:'ok',data:'ok',rule:'ok'},
+          reply:'«В наличии 24 кресла — уже в резерве, остальные 36 привезём под заказ. Для первого заказа работаем по предоплате, счёт отправили на почту.»'}
       ]
     }
   };
@@ -76,14 +89,14 @@
       });
       hub.classList.remove('is-ok','is-bad','is-wait');
       if(v==='bad')hub.classList.add('is-bad');else if(v==='wait')hub.classList.add('is-wait');else if(v)hub.classList.add('is-ok');
-      verdict.textContent=v?LABEL[v]:'ОЖИДАЕТ ЗАПРОСА';
+      verdict.textContent=v?HUBV[v]:'ОЖИДАЕТ ЗАПРОСА';
     }
     function fmt(n){return n.toFixed(2).replace('.',',')+' ₽'}
     function renderSum(){
-      sumChecks.textContent=stats.checks;sumCost.textContent=fmt(stats.cost);sumStop.textContent=stats.stop;sumHuman.textContent=stats.human;
+      sumChecks.textContent=stats.checks;sumCost.textContent=fmt(stats.cost);sumStop.textContent=stats.stop;sumHuman.textContent=stats.dec?Math.round((stats.dec-stats.human)/stats.dec*100)+'%':'—';
     }
     function reset(){
-      stop();idx=0;stats={checks:0,cost:0,stop:0,human:0};
+      stop();idx=0;stats={checks:0,cost:0,stop:0,human:0,dec:0};
       var sc=SCENARIOS[cur];
       inB.querySelector('span').textContent=sc.inLabel;inB.querySelector('p').textContent=sc.inText;
       outB.querySelector('span').textContent=sc.outLabel;outB.querySelector('p').textContent='Появится после проверки';
@@ -107,10 +120,12 @@
       st.a.concat(st.s).forEach(function(id){var n=root.querySelector('[data-ex-node="'+id+'"]');if(n)n.classList.add(st.v==='bad'?'is-bad':st.v==='wait'?'is-wait':'is-active')});
       setHub(st.hub,st.v);
       if(st.tg)showTg(st.tg);
-      else if(st.press){tg.querySelector('b').classList.add('pressed');stats.human++;setTimeout(function(){tg.classList.remove('show')},reduced?0:900)}
+      else if(st.press){tg.querySelector('b').classList.add('pressed');setTimeout(function(){tg.classList.remove('show')},reduced?0:900)}
       else tg.classList.remove('show');
       if(st.k){stats.checks++;stats.cost+=PRICE[st.k]}
       if(st.v==='bad')stats.stop++;
+      if(!st.press)stats.dec++;
+      if(st.v==='wait')stats.human++;
       if(st.reply){outB.querySelector('p').textContent=st.reply;outB.classList.remove('is-empty');outB.classList.add('is-ok')}
       var li=document.createElement('li');
       li.innerHTML='<span>'+String(idx+1).padStart(2,'0')+'</span><span></span><span></span><em class="'+CLS[st.v]+'">'+LABEL[st.v]+'</em>';
